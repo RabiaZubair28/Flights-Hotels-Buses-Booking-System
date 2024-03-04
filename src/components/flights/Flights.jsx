@@ -57,23 +57,25 @@ export const Flights = ()=>{
     }
 
     // the code for the search related problem
-    const [manue1, setMenu1] = useState(false);
-    const [manue2, setMenu2] = useState(false);
-    const [startInput, setStartInput] = useState(false);
-    const [endInput, setEndInput] = useState(false);
+    // const [manue1, setMenu1] = useState(false);
+    // const [manue2, setMenu2] = useState(false);
+    // const [startInput, setStartInput] = useState(false);
+    // const [endInput, setEndInput] = useState(false);
 
-    const openMenuOneHandler = (e) => { 
-        setStartInput(e.target.value);
-        if (!manue1) {
-            setMenu1(true);
-        }
-    }
-    const openMenuTwoHandler = (e) => { 
-        setEndInput(e.target.value);
-        if (!manue2) {
-            setMenu2(true);
-        }
-    }
+    // const openMenuOneHandler = (e) => { 
+    //     setStartInput(e.target.value);
+    //     if (!manue1) {
+    //         setMenu1(true);
+    //     }
+    // }
+    // const openMenuTwoHandler = (e) => { 
+    //     setEndInput(e.target.value);
+    //     if (!manue2) {
+    //         setMenu2(true);
+    //     }
+    // }
+    
+    const myData = jsonData;
 
     // for the date input
     const [currentDate, setCurrentDate] = useState('');
@@ -98,7 +100,7 @@ export const Flights = ()=>{
     const [search2, setSearch2] = useState("");
     const [searchData2, setSearchData2] = useState([]);
     useEffect(() => {
-        const dummyData2 = searchData2.filter((city) => city.name.toLowerCase().startsWith(search2))
+        const dummyData2 = jsonData.cities.filter((city) => city.name.toLowerCase().startsWith(search2))
         // console.log("dummyData2", search2);
       setSearchData2(dummyData2)
     },[search2])
@@ -201,23 +203,40 @@ export const Flights = ()=>{
                     <Row className="main_paramters">
                         <Col className="mb-3"> 
                             <div class="search-container from">
-                                <input type="search" id="search-input" oninput="" onChange={openMenuOneHandler} placeholder="From?" />
+                                <input type="search" id="search-input" oninput="" onChange={(e)=>{setSearch(e.target.value)}} placeholder="From?" />
                                 <i class="fa fa-map-marker-alt" id="search-icon"></i>
                             </div>
                             <div className="inputOne">
-                                < FlightMenu/>
-                                   
-                                </div>
+                                {
+                                    searchData.map((d, index) => {
+                                        return (
+                                            <div key={index} className="text-dark">
+                                               
+                                                {d.name}  
+                                            </div>
+                                        )
+                                    })
+                                } 
+                                
+                            </div>
                         </Col>
                         <Col className="mb-3">
                             <div className="search-container to"> 
-                                <input type="search" id="search-input" oninput="" onChange={openMenuTwoHandler} placeholder="To?"/> 
+                                <input type="search" id="search-input" oninput="" onChange={(e)=>{setSearch2(e.target.value)}} placeholder="To?"/> 
                                 <i class="fa fa-map-marker-alt" id="search-icon"></i>   
                             </div>
                             <div className="inputOne">
-                                < FlightMenu/>
+                                {
+                                    searchData2.map((data,index)=>{
+                                        return (
+                                            <div key={index} className="text-dark">
+                                                {data.name}        
+                                            </div>
+                                        )
+                                    })
+                                }
                                    
-                                </div>
+                            </div>
 
                         </Col>
                         <Col className="mb-3"> 
