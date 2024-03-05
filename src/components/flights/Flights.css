@@ -22,10 +22,15 @@ select option:hover {
     color: white;
 }
 
+.option_value:hover {
+    background-color: #2e2d2b;
+    color: #f5b342;
+    cursor: pointer;
+}
 .search-container {
     position: relative;
 }
-#search-input {
+.search-input {
     padding-left: 30px;
 }
 #search-icon {
@@ -85,7 +90,7 @@ select:hover {
 .relative {
     position: relative;
     height: 100vh;
-    background-color: #2e2d2b;
+    /* background-color: #2e2d2b; */
 }
 .search_flight {
     border-radius: 6px;
@@ -115,4 +120,71 @@ select:hover {
 
 input [type='date'] {
     placeholder: 'Today';
+}
+/*  a section  where i have to divide the pages */
+.about__content .section__description {
+    margin-bottom: 2rem;
+}
+.about-bg {
+    background-color: rgb(34, 36, 36);
+}
+.desc,
+.subtitle,
+.title {
+    color: aliceblue;
+}
+.section__subheader,
+.section__header {
+    text-align: center;
+}
+.buton {
+    color: aliceblue;
+    background-color: #f5b342;
+    border-radius: 5px;
+    border: 1px solid #f5b342;
+    padding-inline: 18px;
+    padding-block: 8px;
+}
+
+.menu__items {
+    list-style: none;
+    margin-block: 4rem;
+    display: grid;
+    gap: 1rem 4rem;
+}
+
+.menu__items li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu__items li:hover {
+    background-color: #f5b342;
+}
+
+.menu__items img {
+    max-width: 100px;
+    border-radius: 2px;
+}
+
+.menu__items h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 800;
+    font-family: var(--header-font);
+    color: var(--text-dark);
+    transition: 0.3s;
+}
+
+.menu__items p {
+    max-width: 400px;
+    color: var(--text-light);
+    transition: 0.3s;
+}
+
+.menu__items li:hover :is(h4, p) {
+    color: var(--white);
 }

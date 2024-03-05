@@ -1,6 +1,8 @@
 import React from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+import '../shared/hotels_shared/SearchBar';
+
 import { Container, Row, Col } from 'react-bootstrap';
 import './About.css';
 import Button from 'react-bootstrap/Button';
@@ -14,6 +16,7 @@ import b3 from '../flights-images/interior-public-bus-transport.jpg';
 import h1 from '../flights-images/traveller-1.jpg';
 import h2 from '../flights-images/traveller-2.jpg';
 import h3 from '../flights-images/traveller-3.jpg';
+import SearchBar from '../shared/hotels_shared/SearchBar';
 
 export const About = () => {
     return (
@@ -178,6 +181,8 @@ export const About = () => {
                     </p>
                 </Col>
             </Row>
+            <SearchBar/>
         </Container>
+        
     );
 };

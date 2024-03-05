@@ -6,7 +6,8 @@ import '../src/components/flights/Flights.css';
 function App() {
     return (
         <>
-            <Flights/>
+           
+            <Flights />
             {/* <About /> */}
         </>
     );

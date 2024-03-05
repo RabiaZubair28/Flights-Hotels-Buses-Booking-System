@@ -2,17 +2,22 @@ import React, { useEffect } from 'react';
 import './Flights.css';
 import { useState } from 'react';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
-import { FlightMenu } from './FlightMenu';
-
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import cityData1 from './city1';
-import cityData2 from './city2';
+
+// import Container from 'react-bootstrap/Container';
+
 import jsonData from '../flights.json';
+
 // console.log('jsonData', jsonData);
 // import infantPic from './baby_4605422.png';
-
+import r1 from '../../flights-images/r1.jpg';
+import r3 from '../../flights-images/r2.jpg';
+import r2 from '../../flights-images/r3.jpg';
+import r4 from '../../flights-images/r4.jpg';
+import r5 from '../../flights-images/r5.jpg';
+import r6 from '../../flights-images/r6.jpg';
+import { FlightMenu } from './FlightMenu';
 export const Flights = () => {
     const [isTravelersVisible, setIsTravelersVisible] = useState(false);
     const showTravelers = () => {
@@ -52,8 +57,11 @@ export const Flights = () => {
     };
 
     // the code for the search related problem
-    // const [manue1, setMenu1] = useState(false);
-    // const [manue2, setMenu2] = useState(false);
+    
+    const [manue1, setMenu1] = useState(false);
+    const [manue2, setMenu2] = useState(false);
+
+
     // const [startInput, setStartInput] = useState(false);
     // const [endInput, setEndInput] = useState(false);
 
@@ -80,41 +88,55 @@ export const Flights = () => {
         setCurrentDate(formattedDate);
     }, []);
 
-    const [search, setSearch] = useState('');
-    const [searchData, setSearchData] = useState([]);
+    // const [search, setSearch] = useState('');
+    // const [searchData, setSearchData] = useState([]);
 
-    useEffect(() => {
-        const dummyData = jsonData.cities.filter((city) =>
-            city.name.toLowerCase().startsWith(search),
-        );
-        // console.log('dummyData', dummyData);
-        setSearchData(dummyData);
-    }, [search]);
+    // useEffect(() => {
+    //     const dummyData = jsonData.cities.filter((city) =>
+    //         city.name.toLowerCase().startsWith(search),
+    //     );
+    //     // console.log('dummyData', dummyData);
+    //     setSearchData(dummyData);
+    // }, [search]);
 
     // now search two
 
     const [search2, setSearch2] = useState('');
-    const [searchData2, setSearchData2] = useState([]);
-    useEffect(() => {
-        const dummyData2 = jsonData.cities.filter((city) =>
-            city.name.toLowerCase().startsWith(search2),
-        );
-        // console.log("dummyData2", search2);
-        setSearchData2(dummyData2);
-    }, [search2]);
+    const [search1, setSearch1] = useState('');
+
+    const searchOnehandler = (e) => {
+        setSearch1(e.target.value);
+        if (!manue1) {
+            setMenu1(true);
+        }
+    }
+    const searchTwohandler = (e) => {
+        setSearch2(e.target.value);
+        if (!manue2) {
+            setMenu2(true);
+        }
+    }
+
+    // useEffect(() => {
+    //     const dummyData2 = jsonData.cities.filter((city) =>
+    //         city.name.toLowerCase().startsWith(search2),
+    //     );
+    //     // console.log("dummyData2", search2);
+    //     setSearchData2(dummyData2);
+    // }, [search2]);
 
     const handleClick = (e) => {
         e.preventDefault();
-        const fromValue = jsonData.cities.filter(
-            (s) => s.name.toLowerCase() === search.toLowerCase(),
-        );
-        console.log('fromValue', fromValue);
-        if (fromValue) {
-            const toValue = fromValue[0].flights.filter(
-                (f) => f.destination.toLowerCase() === search2.toLowerCase(),
-            );
-            console.log('toValue', toValue);
-        }
+        // const fromValue = jsonData.cities.filter(
+        //     (s) => s.name.toLowerCase() === search.toLowerCase(),
+        // );
+        // console.log('fromValue', fromValue);
+        // if (fromValue) {
+        //     const toValue = fromValue[0].flights.filter(
+        //         (f) => f.destination.toLowerCase() === search2.toLowerCase(),
+        //     );
+        //     console.log('toValue', toValue);
+        // }
     };
 
     return (
@@ -132,16 +154,17 @@ export const Flights = () => {
                         <Col>
                             <select>
                                 <option value="">
-                                    <span
+                                    <span className='option_value'
                                         style={{
                                             fontSize: '16px',
                                             fontWeight: '500',
+            
                                         }}>
                                         one-way
                                     </span>
                                 </option>
                                 <option value="">
-                                    <span
+                                    <span className='option_value'
                                         style={{
                                             fontSize: '16px',
                                             fontWeight: '500',
@@ -414,20 +437,23 @@ export const Flights = () => {
                     <Row className="main_paramters">
                         <Col className="mb-3">
                             <div class="search-container from">
-                                <input
+                                <input className='search-input'
                                     type="search"
-                                    id="search-input"
+                                    id="search-input_one"
                                     oninput=""
-                                    onChange={(e) => {
-                                        setSearch(e.target.value);
+                                    onClick={() => {
+                                        setMenu1(!manue1)
+                                        setMenu2(false)
                                     }}
+                                    onChange={searchOnehandler}
                                     placeholder="From?"
                                 />
                                 <i
                                     class="fa fa-map-marker-alt"
                                     id="search-icon"></i>
                             </div>
-                            <div className="inputOne">
+                            < FlightMenu inpValueOne={search1} id_one="1" from_value={manue1} from_value_func={setMenu1 }  />
+                            {/* <div className="inputOne">
                                 {searchData.map((d, index) => {
                                     return (
                                         <div key={index} className="text-dark">
@@ -435,24 +461,27 @@ export const Flights = () => {
                                         </div>
                                     );
                                 })}
-                            </div>
+                            </div> */}
                         </Col>
                         <Col className="mb-3">
                             <div className="search-container to">
-                                <input
+                                <input className='search-input'
                                     type="search"
-                                    id="search-input"
+                                    id="search-input_two"
                                     oninput=""
-                                    onChange={(e) => {
-                                        setSearch2(e.target.value);
+                                    onClick={() => {
+                                        setMenu1(false)
+                                        setMenu2(!manue2)
                                     }}
+                                    onChange={searchTwohandler}
                                     placeholder="To?"
                                 />
                                 <i
                                     class="fa fa-map-marker-alt"
                                     id="search-icon"></i>
                             </div>
-                            <div className="inputOne">
+                            <  FlightMenu inpValueOne={search2} id_one ="2" from_value={manue2} from_value_func={setMenu2 }/>
+                            {/* <div className="inputOne">
                                 {searchData2.map((data, index) => {
                                     return (
                                         <div key={index} className="text-dark">
@@ -460,7 +489,7 @@ export const Flights = () => {
                                         </div>
                                     );
                                 })}
-                            </div>
+                            </div> */}
                         </Col>
                         <Col className="mb-3">
                             <div className="date">
@@ -488,31 +517,116 @@ export const Flights = () => {
                 </div>
             </div>
             <div className="text-center d-flex flex-col justify-content-center align-items-center">
-                <Row>
-                    <Col>
-                        {/* {
-                            searchData.map((d, index) => {
-                                return (
-                                    <div key={index} className="text-dark">
-                                        {d.name}
-                                    </div>
-                                )
-                            })   
-                        } */}
+                <section className="about-bg">
+                    <div className="about__content text-center">
+                        <p className="title section__subheader">ABOUT US</p>
+                        <h2 className=" subtitle section__header">
+                            Discover Our Underground
+                        </h2>
+                        <p className=" px-5 mx-auto desc section__description">
+                            Welcome to a hidden realm of extraordinary, luxury,
+                            comfort, and adventure converge. Our greate flight
+                            offer an unparalleled escape from the ordinary,
+                            inviting you to explore a subterranean world of
+                            wonders.
+                        </p>
+                        <button className="buton">Book Now</button>
+                    </div>
+                </section>
+                <div className='cards__flight'>
+                
+                </div>
+            </div>
+
+            <section className="about-bg">
+                <div className="about__content text-center">
+                    <p className="title section__subheader">REFRESHMENT</p>
+                    <h2 className=" subtitle section__header">
+                        GASTRONOMIC CHOICES
+                    </h2>
+                    <p className=" px-5 mx-auto desc section__description">
+                        Welcome to a hidden realm of extraordinary, luxury,
+                        comfort, and adventure converge. Our greate flight offer
+                        an unparalleled escape from the ordinary, inviting you
+                        to explore a subterranean world of wonders.
+                    </p>
+                    <button className="buton">Book Now</button>
+                </div>
+            </section>
+            {/* our refreshments here  */}
+            <div style={{"width":"90%"}} className='ms-auto me-auto'>
+                <Row className='d-flex align-items-center'>
+                    <Col lg="6">
+                        <ul class="menu__items">
+                            <li>
+                                <img src={r1} alt="menu" />
+                                <div class="menu__details">
+                                    <h4>Eggs & Bacon</h4>
+                                    <p>
+                                        It is a culinary innovation that puts a
+                                        unique spin on the beloved breakfast
+                                        combination.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src={r2} alt="menu" />
+                                <div class="menu__details">
+                                    <h4>Tea or Coffee</h4>
+                                    <p>
+                                        A classic choice for your daily dose of
+                                        comfort and calmness.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src={r3} alt="menu" />
+                                <div class="menu__details">
+                                    <h4>Chia Oatmeal</h4>
+                                    <p>
+                                        Our Chia Oatmeal is a wholesome
+                                        nutrient-packed breakfast delight.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
                     </Col>
-                    <Col>
-                        {/* {
-                            searchData2.map((data,index)=>{
-                                return (
-                                    <div key={index} className="text-dark">
-                                        {data.name}
-                                        {data.shortForm}
-                                        {data.flightNumber}    
-                                        {data.flightPrice}
-                                    </div>
-                                )
-                            })
-                        } */}
+                    <Col lg="6">
+                        <ul class="menu__items">
+                            <li>
+                                <img src={r4} alt="menu" />
+                                <div class="menu__details">
+                                    <h4>Fruit Parfait</h4>
+                                    <p>
+                                        Our Fruit Parfait is a delightful
+                                        culinary masterpiece of freshness and
+                                        flavor.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src={r5} alt="menu" />
+                                <div class="menu__details">
+                                    <h4>Marmalade Selection</h4>
+                                    <p>
+                                        Our Marmalade Selection is a delectable
+                                        medley of vibrant, handcrafted citrus
+                                        preserves.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src={r6} alt="menu" />
+                                <div class="menu__details">
+                                    <h4>Cheese Plate</h4>
+                                    <p>
+                                        Our cheese plate is a masterpiece that
+                                        celebrates rich and diverse world of
+                                        cheeses.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
                     </Col>
                 </Row>
             </div>
