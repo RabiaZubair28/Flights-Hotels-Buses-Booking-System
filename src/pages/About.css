@@ -11,5 +11,15 @@
 }
 
 .detail {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    margin-top: 30px;
+    font-size: 20px;
+}
+.flights,
+.buses,
+.hotels {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
