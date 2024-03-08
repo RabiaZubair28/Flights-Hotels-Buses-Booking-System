@@ -4,6 +4,8 @@ import { useState } from 'react';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import FlightDsiplaty from './FlightDisplay.jsx';
+import FlightSupport from './FlightSupport.jsx';
 
 // import Container from 'react-bootstrap/Container';
 
@@ -57,26 +59,9 @@ export const Flights = () => {
     };
 
     // the code for the search related problem
-    
+
     const [manue1, setMenu1] = useState(false);
     const [manue2, setMenu2] = useState(false);
-
-
-    // const [startInput, setStartInput] = useState(false);
-    // const [endInput, setEndInput] = useState(false);
-
-    // const openMenuOneHandler = (e) => {
-    //     setStartInput(e.target.value);
-    //     if (!manue1) {
-    //         setMenu1(true);
-    //     }
-    // }
-    // const openMenuTwoHandler = (e) => {
-    //     setEndInput(e.target.value);
-    //     if (!manue2) {
-    //         setMenu2(true);
-    //     }
-    // }
 
     const myData = jsonData;
 
@@ -88,17 +73,6 @@ export const Flights = () => {
         setCurrentDate(formattedDate);
     }, []);
 
-    // const [search, setSearch] = useState('');
-    // const [searchData, setSearchData] = useState([]);
-
-    // useEffect(() => {
-    //     const dummyData = jsonData.cities.filter((city) =>
-    //         city.name.toLowerCase().startsWith(search),
-    //     );
-    //     // console.log('dummyData', dummyData);
-    //     setSearchData(dummyData);
-    // }, [search]);
-
     // now search two
 
     const [search2, setSearch2] = useState('');
@@ -109,21 +83,13 @@ export const Flights = () => {
         if (!manue1) {
             setMenu1(true);
         }
-    }
+    };
     const searchTwohandler = (e) => {
         setSearch2(e.target.value);
         if (!manue2) {
             setMenu2(true);
         }
-    }
-
-    // useEffect(() => {
-    //     const dummyData2 = jsonData.cities.filter((city) =>
-    //         city.name.toLowerCase().startsWith(search2),
-    //     );
-    //     // console.log("dummyData2", search2);
-    //     setSearchData2(dummyData2);
-    // }, [search2]);
+    };
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -154,17 +120,18 @@ export const Flights = () => {
                         <Col>
                             <select>
                                 <option value="">
-                                    <span className='option_value'
+                                    <span
+                                        className="option_value"
                                         style={{
                                             fontSize: '16px',
                                             fontWeight: '500',
-            
                                         }}>
                                         one-way
                                     </span>
                                 </option>
                                 <option value="">
-                                    <span className='option_value'
+                                    <span
+                                        className="option_value"
                                         style={{
                                             fontSize: '16px',
                                             fontWeight: '500',
@@ -437,13 +404,14 @@ export const Flights = () => {
                     <Row className="main_paramters">
                         <Col className="mb-3">
                             <div class="search-container from">
-                                <input className='search-input'
+                                <input
+                                    className="search-input"
                                     type="search"
                                     id="search-input_one"
                                     oninput=""
                                     onClick={() => {
-                                        setMenu1(!manue1)
-                                        setMenu2(false)
+                                        setMenu1(!manue1);
+                                        setMenu2(false);
                                     }}
                                     onChange={searchOnehandler}
                                     placeholder="From?"
@@ -452,26 +420,24 @@ export const Flights = () => {
                                     class="fa fa-map-marker-alt"
                                     id="search-icon"></i>
                             </div>
-                            < FlightMenu inpValueOne={search1} id_one="1" from_value={manue1} from_value_func={setMenu1 }  />
-                            {/* <div className="inputOne">
-                                {searchData.map((d, index) => {
-                                    return (
-                                        <div key={index} className="text-dark">
-                                            {d.name}
-                                        </div>
-                                    );
-                                })}
-                            </div> */}
+                            <FlightMenu
+                                inpValueOne={search1}
+                                id_one="1"
+                                from_value={manue1}
+                                from_value_func={setMenu1}
+                            />
+
                         </Col>
                         <Col className="mb-3">
                             <div className="search-container to">
-                                <input className='search-input'
+                                <input
+                                    className="search-input"
                                     type="search"
                                     id="search-input_two"
                                     oninput=""
                                     onClick={() => {
-                                        setMenu1(false)
-                                        setMenu2(!manue2)
+                                        setMenu1(false);
+                                        setMenu2(!manue2);
                                     }}
                                     onChange={searchTwohandler}
                                     placeholder="To?"
@@ -480,16 +446,12 @@ export const Flights = () => {
                                     class="fa fa-map-marker-alt"
                                     id="search-icon"></i>
                             </div>
-                            <  FlightMenu inpValueOne={search2} id_one ="2" from_value={manue2} from_value_func={setMenu2 }/>
-                            {/* <div className="inputOne">
-                                {searchData2.map((data, index) => {
-                                    return (
-                                        <div key={index} className="text-dark">
-                                            {data.name}
-                                        </div>
-                                    );
-                                })}
-                            </div> */}
+                            <FlightMenu
+                                inpValueOne={search2}
+                                id_one="2"
+                                from_value={manue2}
+                                from_value_func={setMenu2}
+                            />
                         </Col>
                         <Col className="mb-3">
                             <div className="date">
@@ -516,27 +478,29 @@ export const Flights = () => {
                     </Row>
                 </div>
             </div>
-            <div className="text-center d-flex flex-col justify-content-center align-items-center">
-                <section className="about-bg">
-                    <div className="about__content text-center">
-                        <p className="title section__subheader">ABOUT US</p>
-                        <h2 className=" subtitle section__header">
-                            Discover Our Underground
-                        </h2>
-                        <p className=" px-5 mx-auto desc section__description">
-                            Welcome to a hidden realm of extraordinary, luxury,
-                            comfort, and adventure converge. Our greate flight
-                            offer an unparalleled escape from the ordinary,
-                            inviting you to explore a subterranean world of
-                            wonders.
-                        </p>
-                        <button className="buton">Book Now</button>
-                    </div>
-                </section>
-                <div className='cards__flight'>
-                
+            
+            <section className="about-bg">
+                <div className="about__content text-center">
+                    <p className="title section__subheader">ABOUT US</p>
+                    <h2 className=" subtitle section__header">
+                        Discover Our Underground
+                    </h2>
+                    <p className=" px-5 mx-auto desc section__description">
+                        Welcome to a hidden realm of extraordinary, luxury,
+                        comfort, and adventure converge. Our greate flight
+                        offer an unparalleled escape from the ordinary,
+                        inviting you to explore a subterranean world of
+                        wonders.
+                    </p>
+                    <button className="buton">Book Now</button>
                 </div>
+            </section>
+            <div className="cards__flight">
+                {/* card for the display famous flights */}
+                <FlightDsiplaty/>
             </div>
+            
+            
 
             <section className="about-bg">
                 <div className="about__content text-center">
@@ -545,17 +509,14 @@ export const Flights = () => {
                         GASTRONOMIC CHOICES
                     </h2>
                     <p className=" px-5 mx-auto desc section__description">
-                        Welcome to a hidden realm of extraordinary, luxury,
-                        comfort, and adventure converge. Our greate flight offer
-                        an unparalleled escape from the ordinary, inviting you
-                        to explore a subterranean world of wonders.
+                        Enjoy a delightful array of complimentary refreshments onboard our flights, meticulously crafted to satisfy your cravings at 30,000 feet. Indulge in our selection of premium snacks and beverages, curated to enhance your journey with every savory or sweet bite.
                     </p>
                     <button className="buton">Book Now</button>
                 </div>
             </section>
             {/* our refreshments here  */}
-            <div style={{"width":"90%"}} className='ms-auto me-auto'>
-                <Row className='d-flex align-items-center'>
+            <div style={{ width: '90%' }} className="ms-auto me-auto">
+                <Row className="d-flex align-items-center">
                     <Col lg="6">
                         <ul class="menu__items">
                             <li>
@@ -630,6 +591,7 @@ export const Flights = () => {
                     </Col>
                 </Row>
             </div>
+            <FlightSupport/>
         </>
     );
 };

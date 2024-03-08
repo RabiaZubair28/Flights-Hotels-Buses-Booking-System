@@ -188,3 +188,13 @@ input [type='date'] {
 .menu__items li:hover :is(h4, p) {
     color: var(--white);
 }
+.cards__flight {
+    background-color: '#f5b342';
+    padding: 0.5rem;
+}
+.cards__flight {
+    border-top: 5px solid #f5b342;
+    border-bottom: 5px solid #f5b342;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+}

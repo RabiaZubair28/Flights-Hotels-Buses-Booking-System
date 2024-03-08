@@ -1,20 +1,20 @@
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 ::-webkit-scrollbar {
-  width: 15px;
+    width: 15px;
 }
 
 ::-webkit-scrollbar-track {
-  background:rgba(231, 161, 50, 0.864); 
+    background: rgba(231, 161, 50, 0.864);
 }
- 
+
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+    background: #888;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: black;
-} 
+    background: black;
+}
