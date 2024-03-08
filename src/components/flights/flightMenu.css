@@ -1,0 +1,8 @@
+.open {
+    display: block;
+    transform: scale(100%);
+}
+.close {
+    display: none;
+    transform: scale(0);
+}
