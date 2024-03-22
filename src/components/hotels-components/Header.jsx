@@ -35,17 +35,7 @@ function Header() {
                 Home
               </NavLink>
             </li>
-            <li className="nav-item  marg">
-              <NavLink
-                exact
-                to="/about"
-                activeClassName="active"
-                className="nav-links" style={{ color: "white", textDecoration: "none" }}
-                onClick={handleClick}
-              >
-                About
-              </NavLink>
-            </li>
+           
             <li className="nav-item  marg">
               <NavLink
                 exact

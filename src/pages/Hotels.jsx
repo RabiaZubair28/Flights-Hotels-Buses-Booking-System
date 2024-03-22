@@ -26,14 +26,13 @@ const Hotels = () => {
   
   return (
     <>
-    <section className="hotels">
-      <Container>
+    <div className="hotels">
         <div className="content">
-            <h5>Get to Know About <span style={{color:'#ffa500'}}>Our Hotels!</span></h5>
+            <h5>RAW - <span style={{color:'#ffa500'}}>The Explorers</span></h5>
             <h1>Visit <span className="changecontent"></span></h1>
+            <button className='bt'>Book Place</button>
         </div>
-        </Container>
-    </section>
+    </div>
     <section class='banner'>
       <Container>
         <Row>

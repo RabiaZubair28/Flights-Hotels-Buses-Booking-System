@@ -562,21 +562,76 @@ background-color: rgb(34, 36, 36);
 @media only screen and (max-width: 1200px) {
     .hotels .content{
         text-align: center;
-        padding-top: 500px;
+        
     }
+    
+    .hotels{
+      width: 100%;
+      height: 70vh;
+      background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2)), url(../../../public/images/ramadaisl.webp);
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
+    .section__header {
+      font-size: 2rem;
+      padding-inline: 20px;
+      font-weight: 600;
+      font-family: var(--header-font);
+      color: var(--text-dark);
+      text-align: center;
+    }
+    .subtitle{
+      color: aliceblue;
+    }
+    .hotels .content h5{
+      color: white;
+      font-size: 10px;
+      font-weight: 550;
+      text-shadow: 0px 1px 1px black;
+  }
+  .hotels .content h1{
+      color: white;
+      font-size: 30px;
+      font-weight: 550;
+      text-shadow: 0px 1px 1px black;
+      margin-top: 5px;
+  }
+  .changecontent::after{
+      content: ' ';
+      color: #ffa500;
+      text-shadow: 0px 1px 1px black;
+      animation: change 10s infinite linear;
+  }
+  @keyframes change{
+      0%{content: "Ramada";}
+      10%{content: "PC";}
+      20%{content: "Moven'Pick";}
+      30%{content: "Hotel One";}
+      40%{content: "Hayatt";}
+      50%{content: "Sheraton";}
+      60%{content: "Mariott";}
+      70%{content: "Taj Krishna";}
+      80%{content: "Trident";}
+      90%{content: "Nishat";}
+      100%{content: "Avari";}
+  } 
+  
+    
 }
 .hotels .content h5{
     color: white;
-    font-size: 38px;
+    font-size: 20px;
     font-weight: 550;
     text-shadow: 0px 1px 1px black;
+    
 }
 .hotels .content h1{
     color: white;
-    font-size: 70px;
+    font-size: 40px;
     font-weight: 550;
     text-shadow: 0px 1px 1px black;
     margin-top: 5px;
+    padding-bottom: 10px;
 }
 .changecontent::after{
     content: ' ';
@@ -597,5 +652,18 @@ background-color: rgb(34, 36, 36);
     90%{content: "Nishat";}
     100%{content: "Avari";}
 } 
+.bt{
+  padding-inline: 30px;
+  padding-block: 10px;
+  background-color: #ffa500;
+  border: 2px dashed white;
+  border-radius: 5px;
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+}
+.bt:hover{
+  box-shadow: white 0px 4px 12px;
+}
 
   
