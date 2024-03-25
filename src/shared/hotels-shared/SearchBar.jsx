@@ -111,7 +111,7 @@ import data from '../../data/hotels-data/hotels.json';
                     </div>
                   </div>   
                 )
-              }).slice(0,20)
+              }).slice(0,8)
           }
         </div>
     </div>
